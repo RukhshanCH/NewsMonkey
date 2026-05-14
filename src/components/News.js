@@ -6,6 +6,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 export default class News extends Component {
 
+    apiKey = process.env.REACT_APP_NEWS_API_KEY;
+
     constructor(props) {
         super(props)
         this.state = {
@@ -34,7 +36,7 @@ export default class News extends Component {
         if (this.state.loading || page === null)
             return { articles: [], nextPage: null };
         const pageParam = page ? `&page=${page}` : "";
-        const url = `https://newsdata.io/api/1/latest?country=in${this.props.category}&apikey=pub_54b3666ff37642729f1eb290aa97b039&q=latest%20news${pageParam}`;
+        const url = `https://newsdata.io/api/1/latest?country=in${this.props.category}&apikey=${this.apiKey}&q=latest%20news${pageParam}`;
 
         try {
             this.setState({ loading: true });
