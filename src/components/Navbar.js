@@ -69,7 +69,7 @@ export default function Navbar(props) {
                         </ul>
                     </div>
                     
-                    <div className="dropdown">
+                    <div className="dropdown" style={{margin: "0 auto"}}>
                         <button className="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {county}
                         </button>
