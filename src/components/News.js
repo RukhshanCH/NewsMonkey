@@ -1,6 +1,5 @@
-import React, { Component, useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import NewsItem from './NewsItem';
-import Spinner from './Spinner';
 import InfiniteScroll from "react-infinite-scroll-component";
 import NewsItemSkeleton from './NewsItemSkeleton';
 
@@ -9,7 +8,6 @@ export default function News(props) {
     const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
     const [error, setError] = useState("")
-    const [country, setCountry] = useState("")
     const [articles, setArticles] = useState([])
     const [totalresults, setTotalresults] = useState(0)
     const [lastFetchedPage, setLastFetchedPage] = useState(null)
@@ -17,12 +15,12 @@ export default function News(props) {
     const [page, setPage] = useState("")
 
     useEffect(() => {
+        document.title =
+            props.category === ''
+                ? 'Home - NewsMonkey'
+                : `${capitalizeFirstLetter(props.category.slice(10))} - NewsMonkey`;
+        
         const init = async () => {
-            document.title =
-                props.category === ''
-                    ? 'NewsMonkey - Home'
-                    : `NewsMonkey - ${capitalizeFirstLetter(props.category.slice(10))}`;
-
             const { articles, nextPage } = await fetchArticles();
             setArticles(articles);
             setPage(nextPage);
@@ -40,9 +38,9 @@ export default function News(props) {
 
     const fetchArticles = async (page = "") => {
         props.setprogress(10)
-
+        
         const pageParam = page ? `&page=${page}` : "";
-        const country = props.country == 'USA' ? 'us' : props.country.toLowerCase()
+        const country = props.country === 'USA' ? 'us' : props.country.toLowerCase()
         const url = `https://newsdata.io/api/1/latest?country=${country || "pk"}${props.category}&apikey=${apiKey}&q=latest%20news${pageParam}`;
 
         try {
@@ -52,15 +50,11 @@ export default function News(props) {
             props.setprogress(30)
 
             if (data.status === 429) {
-                // alert("You have hit the API request limit (429). Please wait or use a new API key.");
+                alert("You have hit the API request limit (429). Please wait or use a new API key.");
                 setLoading(false)
                 setArticles([]);
                 return { articles: [], nextPage: null };
             }
-
-            if (loading || page === null)
-                setArticles([]);
-            return { articles: [], nextPage: null };
 
             const parsedData = await data.json();
             props.setprogress(50)
@@ -132,8 +126,7 @@ export default function News(props) {
                                 Array(6).fill("").map((_, i) => <div key={i} className='col-lg-4 col-md-6 my-3'><NewsItemSkeleton /></div>) :
 
                                 Array.isArray(articles) && articles.map((el) => {
-                                    return
-                                    <div key={el.article_id} className='col-lg-4 col-md-6 my-3'>
+                                    return <div key={el.article_id} className='col-lg-4 col-md-6 my-3'>
                                         <NewsItem title={el.title ? el.title.slice(0, 45) : ''} desc={el.description ? el.description.slice(0, 88) : ''} imageurl={el.image_url} newsurl={el.link} author={el.creator} date={el.pubDate} source={el.source_name} category={props.category.slice(10)} />
                                     </div>
                                 })

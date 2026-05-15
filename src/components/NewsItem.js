@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import noImg from "../assets/no_img.jpg";
 
 export default function NewsItem(props) {
@@ -27,7 +26,7 @@ export default function NewsItem(props) {
         <div className="card news-card">
 
             <div className="source-badge bg-secondary">
-                <span className="badge" style={{ backgroundColor: categoryColors[category] }}>
+                <span className="badge" style={{ backgroundColor: badgeColor }}>
                     {source}
                 </span>
             </div>

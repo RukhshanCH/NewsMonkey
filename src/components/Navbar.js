@@ -74,9 +74,9 @@ export default function Navbar(props) {
                             {county}
                         </button>
                         <ul className="dropdown-menu">
-                            <li><a className="dropdown-item btn" onClick={(e) => {e.preventDefault(); handleCountrySelect('PK')}}>PK</a></li>
-                            <li><a className="dropdown-item btn" onClick={(e) => {e.preventDefault(); handleCountrySelect('IN')}}>IN</a></li>
-                            <li><a className="dropdown-item btn" onClick={(e) => {e.preventDefault(); handleCountrySelect('USA')}}>USA</a></li>
+                            <li><button className="dropdown-item btn" onClick={(e) => {e.preventDefault(); handleCountrySelect('PK')}}>PK</button></li>
+                            <li><button className="dropdown-item btn" onClick={(e) => {e.preventDefault(); handleCountrySelect('IN')}}>IN</button></li>
+                            <li><button className="dropdown-item btn" onClick={(e) => {e.preventDefault(); handleCountrySelect('USA')}}>USA</button></li>
                         </ul>
                     </div>
                 </div>
