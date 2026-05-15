@@ -52,6 +52,7 @@ export default function News(props) {
             if (data.status === 429) {
                 alert("You have hit the API request limit (429). Please wait or use a new API key.");
                 setLoading(false)
+                props.setprogress(100)
                 setArticles([]);
                 return { articles: [], nextPage: null };
             }
@@ -72,7 +73,9 @@ export default function News(props) {
             };
         } catch (err) {
             console.error("Fetch failed:", err);
+            console.log("Fetch failed:", err);
             setLoading(false)
+            
             // No internet
             if (!navigator.onLine) {
                 setError("No internet connection")
