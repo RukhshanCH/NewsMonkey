@@ -5,22 +5,29 @@ export default function NewsItem(props) {
     let { title, desc, imageurl, newsurl, author, date, source, category } = props;
 
     const categoryColors = {
-        business: "bg-success",
-        entertainment: "bg-primary",
-        general: "bg-secondary",
-        health: "bg-danger",
-        science: "bg-info",
-        sports: "bg-warning text-dark",
-        technology: "bg-dark"
+        business: "#198754",
+        domestic: "#212529",
+        education: "#0d6efd",
+        entertainment: "#dc3545",
+        environment: "#20c997",
+        food: "#fd7e14",
+        health: "#e83e8c",
+        lifestyle: "#6f42c1",
+        politics: "#6610f2",
+        science: "#0dcaf0",
+        sports: "#ffc107",
+        technology: "#343a40",
+        tourism: "#198754",
+        world: "#6c757d"
     };
 
-    const badgeColor = categoryColors[category] || "bg-secondary";
+    const badgeColor = categoryColors[category];
 
     return (
         <div className="card news-card">
 
-            <div className="source-badge">
-                <span className={`badge ${badgeColor}`}>
+            <div className="source-badge bg-secondary">
+                <span className="badge" style={{ backgroundColor: categoryColors[category] }}>
                     {source}
                 </span>
             </div>
