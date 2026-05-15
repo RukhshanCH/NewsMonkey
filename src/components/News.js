@@ -109,7 +109,7 @@ export default function News(props) {
                     <div className='row'>
                         {Array.isArray(articles) && articles.map((el) => {
                             return <div key={el.article_id} className='col-lg-4 col-md-6 my-3'>
-                                <NewsItem title={el.title ? el.title.slice(0, 45) : ''} desc={el.description ? el.description.slice(0, 88) : ''} imageurl={el.image_url} newsurl={el.link} author={el.creator} date={el.pubDate} source={el.source_name} />
+                                <NewsItem title={el.title ? el.title.slice(0, 45) : ''} desc={el.description ? el.description.slice(0, 88) : ''} imageurl={el.image_url} newsurl={el.link} author={el.creator} date={el.pubDate} source={el.source_name} category={props.category.slice(10)} />
                             </div>
                         })}
                         {page === null && <div className="all-caught-up">

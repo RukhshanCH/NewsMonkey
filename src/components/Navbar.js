@@ -11,10 +11,6 @@ export default function Navbar(props) {
         props.setCountry(county)
     };
 
-    // If I have used useState in one page, how do I use or set its value on another page
-    // I set the value of country in navbar using useState which I want to use in App.js which will than used by News.js
-    // Error handling when api cannot fetchable due to wifi not available and or for any other possible reason
-
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
