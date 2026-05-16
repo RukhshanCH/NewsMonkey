@@ -25,8 +25,8 @@ export default function NewsItem(props) {
     return (
         <div className="card news-card">
 
-            <div className="source-badge bg-secondary">
-                <span className="badge" style={{ backgroundColor: badgeColor }}>
+            <div className="source-badge">
+                <span className="badge" style={{ backgroundColor: badgeColor || "#6c757d" }}>
                     {source}
                 </span>
             </div>

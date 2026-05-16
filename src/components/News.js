@@ -244,6 +244,16 @@ export default function News(props) {
                             <p>🎉 All caught up!</p>
                         </div>
                     }
+                    {
+                        page === null &&
+                        !loading &&
+                        articles.length == 0 &&
+
+                        <div className="all-caught-up text-center my-4">
+                            <hr />
+                            <p>No Related Articles</p>
+                        </div>
+                    }
 
                 </div>
 
