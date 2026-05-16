@@ -247,7 +247,7 @@ export default function News(props) {
                     {
                         page === null &&
                         !loading &&
-                        articles.length == 0 &&
+                        articles.length === 0 &&
 
                         <div className="all-caught-up text-center my-4">
                             <hr />
